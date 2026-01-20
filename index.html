@@ -1,0 +1,1685 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DWG Converter Pro - المنصة الهندسية الذكية</title>
+    <meta name="description" content="منصة احترافية لتحويل وإدارة ملفات CAD مع الذكاء الاصطناعي والتعاون">
+    
+    <!-- الخطوط -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;500;600;700;800&family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+    
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    
+    <!-- Manifest -->
+    <link rel="manifest" href="manifest.json">
+    
+    <!-- Styles -->
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <!-- شاشة التحميل -->
+    <div class="loading" id="loadingScreen">
+        <div class="loading-content">
+            <div class="loading-spinner"></div>
+            <h3>DWG Converter Pro</h3>
+            <p>جاري تحميل المنصة...</p>
+        </div>
+    </div>
+
+    <!-- شريط التنقل -->
+    <nav class="navbar" id="navbar">
+        <div class="container">
+            <div class="logo">
+                <div class="logo-icon">
+                    <i class="fas fa-drafting-compass"></i>
+                </div>
+                <span class="logo-text">DWG Converter Pro</span>
+            </div>
+            
+            <ul class="nav-links">
+                <li><a href="#home" class="active">الرئيسية</a></li>
+                <li><a href="#features">المميزات</a></li>
+                <li><a href="#converter">المحول</a></li>
+                <li><a href="#ai-assistant">المساعد الذكي</a></li>
+                <li><a href="#projects">مشاريعي</a></li>
+                <li><a href="#settings">الإعدادات</a></li>
+            </ul>
+            
+            <div class="nav-actions">
+                <button class="theme-toggle" id="themeToggle" title="تبديل المظهر">
+                    <i class="fas fa-moon"></i>
+                    <i class="fas fa-sun"></i>
+                </button>
+                
+                <button class="lang-toggle" id="langToggle">
+                    <span class="lang-text">EN</span>
+                </button>
+                
+                <div class="user-profile" id="userProfile" style="display: none;">
+                    <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='%23667eea'%3E%3Cpath d='M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 3c1.66 0 3 1.34 3 3s-1.34 3-3 3-3-1.34-3-3 1.34-3 3-3zm0 14.2c-2.5 0-4.71-1.28-6-3.22.03-1.99 4-3.08 6-3.08 1.99 0 5.97 1.09 6 3.08-1.29 1.94-3.5 3.22-6 3.22z'/%3E%3C/svg%3E" alt="User" id="userAvatar">
+                    <span class="user-name" id="userName">المستخدم</span>
+                    <div class="user-dropdown">
+                        <a href="#profile"><i class="fas fa-user"></i> الملف الشخصي</a>
+                        <a href="#projects"><i class="fas fa-folder"></i> مشاريعي</a>
+                        <a href="#settings"><i class="fas fa-cog"></i> الإعدادات</a>
+                        <a href="#" class="logout" id="logoutBtn"><i class="fas fa-sign-out-alt"></i> تسجيل الخروج</a>
+                    </div>
+                </div>
+                
+                <button class="btn-login" id="loginBtn" onclick="openLoginModal()">
+                    <i class="fas fa-user"></i>
+                    <span>تسجيل الدخول</span>
+                </button>
+                
+                <div class="hamburger" id="hamburger">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- القائمة الجانبية للجوال -->
+    <div class="mobile-menu" id="mobileMenu">
+        <ul class="mobile-nav-links">
+            <li><a href="#home"><i class="fas fa-home"></i> الرئيسية</a></li>
+            <li><a href="#features"><i class="fas fa-star"></i> المميزات</a></li>
+            <li><a href="#converter"><i class="fas fa-exchange-alt"></i> المحول</a></li>
+            <li><a href="#ai-assistant"><i class="fas fa-robot"></i> المساعد الذكي</a></li>
+            <li><a href="#projects"><i class="fas fa-folder-open"></i> مشاريعي</a></li>
+            <li><a href="#settings"><i class="fas fa-cog"></i> الإعدادات</a></li>
+        </ul>
+    </div>
+
+    <!-- الرئيسية -->
+    <section class="hero" id="home">
+        <div class="hero-bg-elements">
+            <div class="bg-shape shape-1"></div>
+            <div class="bg-shape shape-2"></div>
+            <div class="bg-shape shape-3"></div>
+            <div class="bg-shape shape-4"></div>
+            <div class="bg-shape shape-5"></div>
+        </div>
+        
+        <div class="container">
+            <div class="hero-content">
+                <div class="hero-badge">
+                    <i class="fas fa-bolt"></i>
+                    <span>الآن مع ميزات الذكاء الاصطناعي</span>
+                </div>
+                
+                <h1 class="hero-title">
+                    منصتك الهندسية
+                    <span class="highlight">الذكية</span>
+                    <br>للتحويل والمعالجة
+                </h1>
+                
+                <p class="hero-description">
+                    حول ملفات CAD بسهولة فائقة مع أدوات الذكاء الاصطناعي المتقدمة. 
+                    أنظف الطبقات، قدر الكميات، وتعاون مع فريقك في منصة واحدة متكاملة.
+                </p>
+                
+                <div class="hero-stats">
+                    <div class="stat">
+                        <div class="stat-icon"><i class="fas fa-file-export"></i></div>
+                        <div class="stat-number" data-count="1500000">0</div>
+                        <div class="stat-label">ملف تم تحويله</div>
+                    </div>
+                    <div class="stat">
+                        <div class="stat-icon"><i class="fas fa-users"></i></div>
+                        <div class="stat-number" data-count="500000">0</div>
+                        <div class="stat-label">مستخدم نشط</div>
+                    </div>
+                    <div class="stat">
+                        <div class="stat-icon"><i class="fas fa-globe"></i></div>
+                        <div class="stat-number" data-count="50">0</div>
+                        <div class="stat-label">دولة</div>
+                    </div>
+                </div>
+                
+                <div class="hero-buttons">
+                    <a href="#converter" class="btn btn-primary btn-large">
+                        <i class="fas fa-rocket"></i>
+                        ابدأ التحويل الآن
+                    </a>
+                    <a href="#features" class="btn btn-secondary btn-large">
+                        <i class="fas fa-play"></i>
+                        شاهد المميزات
+                    </a>
+                </div>
+            </div>
+            
+            <div class="hero-visual">
+                <div class="dashboard-preview">
+                    <div class="preview-header">
+                        <div class="preview-dots">
+                            <span></span>
+                            <span></span>
+                            <span></span>
+                        </div>
+                        <span class="preview-title">DWG Converter Pro</span>
+                    </div>
+                    <div class="preview-content">
+                        <div class="preview-sidebar">
+                            <div class="sidebar-item active"></div>
+                            <div class="sidebar-item"></div>
+                            <div class="sidebar-item"></div>
+                            <div class="sidebar-item"></div>
+                        </div>
+                        <div class="preview-main">
+                            <div class="preview-card">
+                                <i class="fas fa-file-cad"></i>
+                                <span>مخطط_الطابق_الأول.dwg</span>
+                                <span class="status done">مكتمل</span>
+                            </div>
+                            <div class="preview-card">
+                                <i class="fas fa-file-pdf"></i>
+                                <span>مخطط_الطابق_الأول.pdf</span>
+                                <span class="status done">مكتمل</span>
+                            </div>
+                            <div class="preview-card">
+                                <i class="fas fa-sync fa-spin"></i>
+                                <span>تحويل_الطابق_الثاني.dwg</span>
+                                <span class="status processing">جاري التحويل...</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="floating-elements">
+                    <div class="float-card card-1">
+                        <i class="fas fa-check-circle"></i>
+                        <span>تم التحويل بنجاح</span>
+                    </div>
+                    <div class="float-card card-2">
+                        <i class="fas fa-robot"></i>
+                        <span>تنظيف تلقائي بالذكاء الاصطناعي</span>
+                    </div>
+                    <div class="float-card card-3">
+                        <i class="fas fa-cloud-upload-alt"></i>
+                        <span>مزامنة سحابية</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="scroll-indicator">
+            <span>مرر للأسفل</span>
+            <div class="mouse">
+                <div class="wheel"></div>
+            </div>
+        </div>
+    </section>
+
+    <!-- المميزات -->
+    <section class="features" id="features">
+        <div class="container">
+            <div class="section-header">
+                <span class="section-badge">المميزات المتقدمة</span>
+                <h2 class="section-title">
+                    كل ما تحتاجه في
+                    <span class="highlight">منصة واحدة</span>
+                </h2>
+                <p class="section-description">
+                    مجموعة شاملة من الأدوات المتقدمة لتحويل ومعالجة ملفات CAD بكفاءة عالية
+                </p>
+            </div>
+            
+            <div class="features-grid">
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-magic"></i>
+                    </div>
+                    <h3>تنظيف ذكي بالذكاء الاصطناعي</h3>
+                    <p>تنظيف تلقائي للطبقات، إزالة الخطوط المكررة، وتصحيح الأسماء غير القياسية</p>
+                    <ul class="feature-list">
+                        <li><i class="fas fa-check"></i> دمج الطبقات المتشابهة</li>
+                        <li><i class="fas fa-check"></i> إزالة التكرارات (Overkill)</li>
+                        <li><i class="fas fa-check"></i> إعادة تسمية ذكية</li>
+                    </ul>
+                </div>
+                
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-calculator"></i>
+                    </div>
+                    <h3>تقدير الكميات التلقائي</h3>
+                    <p>حساب المساحات والأطوال والكميات تلقائياً وتصديرها لملفات Excel</p>
+                    <ul class="feature-list">
+                        <li><i class="fas fa-check"></i> حساب المساحات الكلية</li>
+                        <li><i class="fas fa-check"></i> حصر الأبواب والنوافذ</li>
+                        <li><i class="fas fa-check"></i> تصدير لملفات Excel</li>
+                    </ul>
+                </div>
+                
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-eye"></i>
+                    </div>
+                    <h3>عارض DWG متقدم</h3>
+                    <p>عرض ملفات CAD بتفاصيل عالية مع أدوات قياس وتكبير متقدمة</p>
+                    <ul class="feature-list">
+                        <li><i class="fas fa-check"></i> تكبير وتصغير سلس</li>
+                        <li><i class="fas fa-check"></i> قياس المسافات والأبعاد</li>
+                        <li><i class="fas fa-check"></i> إدارة الطبقات</li>
+                    </ul>
+                </div>
+                
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-users"></i>
+                    </div>
+                    <h3>التعاون الفوري</h3>
+                    <p>مشاركة المشاريع مع الفريق وإضافة التعليقات والملاحظات مباشرة</p>
+                    <ul class="feature-list">
+                        <li><i class="fas fa-check"></i> روابط مشاركة آمنة</li>
+                        <li><i class="fas fa-check"></i> تعليقات مثبتة على الرسم</li>
+                        <li><i class="fas fa-check"></i> تتبع التغييرات</li>
+                    </ul>
+                </div>
+                
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-code-branch"></i>
+                    </div>
+                    <h3>تكامل GitLab</h3>
+                    <p>ربط مشاريعك بمستودعات GitLab وإدارة الإصدارات بسهولة</p>
+                    <ul class="feature-list">
+                        <li><i class="fas fa-check"></i> مزامنة المستودعات</li>
+                        <li><i class="fas fa-check"></i> عرض العمليات (Pipelines)</li>
+                        <li><i class="fas fa-check"></i> طلبات الدمج (MRs)</li>
+                    </ul>
+                </div>
+                
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-cloud"></i>
+                    </div>
+                    <h3>تخزين سحابي</h3>
+                    <p>حفظ مشاريعك آمناً في السحابة والوصول إليها من أي مكان</p>
+                    <ul class="feature-list">
+                        <li><i class="fas fa-check"></i> تشفير البيانات</li>
+                        <li><i class="fas fa-check"></i> مشاركة آمنة</li>
+                        <li><i class="fas fa-check"></i> نسخ احتياطي تلقائي</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- المحول -->
+    <section class="converter" id="converter">
+        <div class="container">
+            <div class="section-header">
+                <span class="section-badge">محول الملفات</span>
+                <h2 class="section-title">
+                    حوّل ملفاتك
+                    <span class="highlight">بسرعة فائقة</span>
+                </h2>
+                <p class="section-description">
+                    اسحب وأفلت ملفاتك أو اضغط لاختيارها، والسماح لنا بالقيام بالباقي
+                </p>
+            </div>
+            
+            <div class="converter-container">
+                <div class="upload-zone" id="dropZone">
+                    <div class="upload-icon">
+                        <i class="fas fa-cloud-upload-alt"></i>
+                    </div>
+                    <h3>اسحب وأفلت ملفاتك هنا</h3>
+                    <p>أو اضغط لاختيار ملفات من جهازك</p>
+                    <input type="file" id="fileInput" multiple accept=".dwg,.dxf,.dwt,.dws" hidden>
+                    <div class="upload-info">
+                        <span><i class="fas fa-file"></i> صيغ مدعومة: DWG, DXF, DWT, DWS</span>
+                        <span><i class="fas fa-weight-hanging"></i> الحد الأقصى: 100 ميجابايت</span>
+                    </div>
+                </div>
+                
+                <div class="conversion-options">
+                    <h4><i class="fas fa-sliders-h"></i> خيارات التحويل</h4>
+                    <div class="options-grid">
+                        <div class="option-group">
+                            <label>صيغة الإخراج</label>
+                            <select id="outputFormat">
+                                <option value="pdf">PDF - وثيقة محمولة</option>
+                                <option value="dxf">DXF - تبادل الرسم</option>
+                                <option value="svg">SVG - رسومات متجهة</option>
+                                <option value="png">PNG - صورة نقطية</option>
+                                <option value="jpg">JPG - صورة نقطية</option>
+                            </select>
+                        </div>
+                        
+                        <div class="option-group">
+                            <label>إصدار الإخراج</label>
+                            <select id="dwgVersion">
+                                <option value="latest">أحدث إصدار (R2024)</option>
+                                <option value="r2023">R2023</option>
+                                <option value="r2022">R2022</option>
+                                <option value="r2021">R2021</option>
+                                <option value="r2020">R2020</option>
+                                <option value="r2018">R2018</option>
+                                <option value="r2013">R2013</option>
+                                <option value="r2010">R2010</option>
+                                <option value="r2004">R2004</option>
+                                <option value="r2000">R2000</option>
+                            </select>
+                        </div>
+                        
+                        <div class="option-group">
+                            <label>دقة الصورة (لصيغ PNG/JPG)</label>
+                            <select id="imageResolution">
+                                <option value="150">150 DPI - قياسي</option>
+                                <option value="300" selected>300 DPI - عالي الدقة</option>
+                                <option value="600">600 DPI - طباعة احترافية</option>
+                                <option value="1200">1200 DPI - دقة قصوى</option>
+                            </select>
+                        </div>
+                        
+                        <div class="option-group">
+                            <label>لون الخلفية</label>
+                            <select id="backgroundColor">
+                                <option value="white">أبيض</option>
+                                <option value="black">أسود</option>
+                                <option value="transparent">شفاف</option>
+                                <option value="custom">لون مخصص</option>
+                            </select>
+                        </div>
+                        
+                        <div class="option-group full-width">
+                            <label>إعدادات إضافية</label>
+                            <div class="checkbox-group">
+                                <label class="checkbox-item">
+                                    <input type="checkbox" id="includeLayers" checked>
+                                    <span>حفظ معلومات الطبقات</span>
+                                </label>
+                                <label class="checkbox-item">
+                                    <input type="checkbox" id="flattenLayers">
+                                    <span>تسطيح الطبقات</span>
+                                </label>
+                                <label class="checkbox-item">
+                                    <input type="checkbox" id="embedFonts" checked>
+                                    <span>تضمين الخطوط</span>
+                                </label>
+                                <label class="checkbox-item">
+                                    <input type="checkbox" id="aiClean" checked>
+                                    <span>تنظيف بالذكاء الاصطناعي</span>
+                                </label>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="convert-actions">
+                        <button class="btn btn-primary" id="convertBtn" disabled>
+                            <i class="fas fa-exchange-alt"></i>
+                            بدء التحويل
+                        </button>
+                        <button class="btn btn-secondary" id="clearBtn">
+                            <i class="fas fa-trash"></i>
+                            مسح الكل
+                        </button>
+                    </div>
+                </div>
+                
+                <div class="files-list" id="filesList" style="display: none;">
+                    <div class="files-header">
+                        <h4><i class="fas fa-file-alt"></i> الملفات المضافة</h4>
+                        <div class="files-actions">
+                            <button class="btn-action" id="downloadAllBtn" disabled>
+                                <i class="fas fa-download"></i>
+                                <span>تحميل الكل</span>
+                            </button>
+                            <button class="btn-action" id="downloadSourceBtn">
+                                <i class="fas fa-code"></i>
+                                <span>مصدر المشروع (ZIP)</span>
+                            </button>
+                        </div>
+                    </div>
+                    <div class="files-container" id="filesContainer"></div>
+                </div>
+                
+                <div class="batch-convert-section" id="batchSection" style="display: none;">
+                    <div class="batch-header">
+                        <h4><i class="fas fa-layer-group"></i> التحويل الجماعي الذكي</h4>
+                        <button class="btn btn-primary" id="batchConvertBtn">
+                            <i class="fas fa-magic"></i>
+                            تحويل متعدد الصيغ
+                        </button>
+                    </div>
+                    <div class="batch-options">
+                        <p>تحويل الملف الواحد إلى صيغ متعددة:</p>
+                        <div class="batch-targets">
+                            <label class="batch-target">
+                                <input type="checkbox" value="pdf" checked>
+                                <span>PDF</span>
+                            </label>
+                            <label class="batch-target">
+                                <input type="checkbox" value="dxf" checked>
+                                <span>DXF</span>
+                            </label>
+                            <label class="batch-target">
+                                <input type="checkbox" value="svg">
+                                <span>SVG</span>
+                            </label>
+                            <label class="batch-target">
+                                <input type="checkbox" value="png">
+                                <span>PNG</span>
+                            </label>
+                            <label class="batch-target">
+                                <input type="checkbox" value="jpg">
+                                <span>JPG</span>
+                            </label>
+                        </div>
+                    </div>
+                    <div class="batch-files-container" id="batchFilesContainer"></div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- المساعد الذكي -->
+    <section class="ai-section" id="ai-assistant">
+        <div class="container">
+            <div class="section-header">
+                <span class="section-badge">الذكاء الاصطناعي</span>
+                <h2 class="section-title">
+                    المساعد الهندسي
+                    <span class="highlight">الذكي</span>
+                </h2>
+                <p class="section-description">
+                    اكتشف قوة الذكاء الاصطناعي في تحليل ومعالجة ملفات CAD الخاصة بك
+                </p>
+            </div>
+            
+            <div class="ai-container">
+                <div class="ai-sidebar">
+                    <h3><i class="fas fa-robot"></i> أدوات الذكاء الاصطناعي</h3>
+                    <ul class="ai-tools">
+                        <li class="ai-tool active" data-tool="cleaner">
+                            <i class="fas fa-broom"></i>
+                            <span>منظف الطبقات</span>
+                        </li>
+                        <li class="ai-tool" data-tool="estimator">
+                            <i class="fas fa-calculator"></i>
+                            <span>تقدير الكميات</span>
+                        </li>
+                        <li class="ai-tool" data-tool="analyzer">
+                            <i class="fas fa-search"></i>
+                            <span>تحليل المخطط</span>
+                        </li>
+                        <li class="ai-tool" data-tool="assistant">
+                            <i class="fas fa-comments"></i>
+                            <span>المساعد المحادثي</span>
+                        </li>
+                    </ul>
+                    
+                    <div class="ai-info">
+                        <div class="ai-status">
+                            <span class="status-dot"></span>
+                            <span>متاح للاستخدام</span>
+                        </div>
+                        <p>الذكاء الاصطناعي جاهز لمساعدتك في مهامك الهندسية</p>
+                    </div>
+                </div>
+                
+                <div class="ai-main">
+                    <div class="ai-tool-panel active" id="cleanerPanel">
+                        <h3><i class="fas fa-broom"></i> منظف الطبقات الذكي</h3>
+                        <p>سيقوم الذكاء الاصطناعي بتحليل ملفك وتنظيف الطبقات تلقائياً</p>
+                        
+                        <div class="ai-actions">
+                            <div class="ai-upload">
+                                <i class="fas fa-cloud-upload-alt"></i>
+                                <p>اسحب ملف DWG هنا للتحليل</p>
+                            </div>
+                            
+                            <div class="cleaning-options">
+                                <h4>خيارات التنظيف:</h4>
+                                <label class="checkbox-item">
+                                    <input type="checkbox" id="mergeLayers" checked>
+                                    <span>دمج الطبقات المتشابهة</span>
+                                </label>
+                                <label class="checkbox-item">
+                                    <input type="checkbox" id="removeDuplicates" checked>
+                                    <span>إزالة العناصر المكررة</span>
+                                </label>
+                                <label class="checkbox-item">
+                                    <input type="checkbox" id="fixLayerNames" checked>
+                                    <span>تصحيح أسماء الطبقات</span>
+                                </label>
+                                <label class="checkbox-item">
+                                    <input type="checkbox" id="removeZeroLength">
+                                    <span>إزالة العناصر صفرية الطول</span>
+                                </label>
+                            </div>
+                            
+                            <button class="btn btn-primary btn-full" id="startCleanBtn">
+                                <i class="fas fa-magic"></i>
+                                بدء التنظيف بالذكاء الاصطناعي
+                            </button>
+                        </div>
+                    </div>
+                    
+                    <div class="ai-tool-panel" id="estimatorPanel">
+                        <h3><i class="fas fa-calculator"></i> تقدير الكميات التلقائي</h3>
+                        <p>احسب المساحات والأطوال والكميات من مخططاتك</p>
+                        
+                        <div class="estimation-config">
+                            <div class="config-group">
+                                <label>نوع الحساب:</label>
+                                <select id="estimationType">
+                                    <option value="areas">المساحات</option>
+                                    <option value="lengths">الأطوال</option>
+                                    <option value="counts">العد (أبواب، نوافذ)</option>
+                                    <option value="all">شامل</option>
+                                </select>
+                            </div>
+                            
+                            <div class="config-group">
+                                <label>صيغة التقرير:</label>
+                                <select id="reportFormat">
+                                    <option value="excel">Excel</option>
+                                    <option value="csv">CSV</option>
+                                    <option value="pdf">PDF</option>
+                                    <option value="json">JSON</option>
+                                </select>
+                            </div>
+                        </div>
+                        
+                        <button class="btn btn-primary btn-full" id="startEstimateBtn">
+                            <i class="fas fa-calculator"></i>
+                            بدء الحساب
+                        </button>
+                    </div>
+                    
+                    <div class="ai-tool-panel" id="analyzerPanel">
+                        <h3><i class="fas fa-search"></i> تحليل المخطط</h3>
+                        <p>احصل على تقرير شامل عن محتوى ملفك</p>
+                        
+                        <div class="analysis-results">
+                            <div class="analysis-placeholder">
+                                <i class="fas fa-chart-bar"></i>
+                                <p>لم يتم تحليل أي ملف بعد</p>
+                            </div>
+                        </div>
+                        
+                        <button class="btn btn-primary btn-full" id="startAnalyzeBtn">
+                            <i class="fas fa-search"></i>
+                            تحليل الملف الحالي
+                        </button>
+                    </div>
+                    
+                    <div class="ai-tool-panel" id="assistantPanel">
+                        <h3><i class="fas fa-comments"></i> المساعد المحادثي</h3>
+                        <p>اسأل أي شيء عن ملفك أو المشروع</p>
+                        
+                        <div class="chat-container">
+                            <div class="chat-messages" id="chatMessages">
+                                <div class="message bot">
+                                    <div class="message-content">
+                                        <i class="fas fa-robot"></i>
+                                        <p>مرحباً! أنا المساعد الذكي. كيف يمكنني مساعدتك اليوم؟</p>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <div class="chat-input">
+                                <input type="text" id="chatInput" placeholder="اكتب سؤالك هنا...">
+                                <button id="sendMessageBtn">
+                                    <i class="fas fa-paper-plane"></i>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- المشاريع -->
+    <section class="projects-section" id="projects">
+        <div class="container">
+            <div class="section-header">
+                <span class="section-badge">إدارة المشاريع</span>
+                <h2 class="section-title">
+                    مشاريعك
+                    <span class="highlight">مُنظّمة</span>
+                </h2>
+                <p class="section-description">
+                    إدارة جميع مشاريعك وملفاتك في مكان واحد مع إمكانية المشاركة والتعاون
+                </p>
+            </div>
+            
+            <div class="projects-dashboard">
+                <div class="projects-sidebar">
+                    <div class="projects-search">
+                        <i class="fas fa-search"></i>
+                        <input type="text" placeholder="البحث في المشاريع...">
+                    </div>
+                    
+                    <div class="projects-filter">
+                        <button class="filter-btn active" data-filter="all">الكل</button>
+                        <button class="filter-btn" data-filter="recent">الأخيرة</button>
+                        <button class="filter-btn" data-filter="shared">المُشاركة</button>
+                        <button class="filter-btn" data-filter="archived">المؤرشفة</button>
+                    </div>
+                    
+                    <div class="projects-list">
+                        <div class="project-item active">
+                            <div class="project-icon">
+                                <i class="fas fa-folder"></i>
+                            </div>
+                            <div class="project-info">
+                                <h4>مشروع فيلا الريم</h4>
+                                <p>آخر تعديل: اليوم</p>
+                            </div>
+                        </div>
+                        
+                        <div class="project-item">
+                            <div class="project-icon">
+                                <i class="fas fa-folder"></i>
+                            </div>
+                            <div class="project-info">
+                                <h4>مركز التجاري</h4>
+                                <p>آخر تعديل: أمس</p>
+                            </div>
+                        </div>
+                        
+                        <div class="project-item">
+                            <div class="project-icon">
+                                <i class="fas fa-folder"></i>
+                            </div>
+                            <div class="project-info">
+                                <h4>مستشفى الشفاء</h4>
+                                <p>آخر تعديل: قبل 3 أيام</p>
+                            </div>
+                        </div>
+                        
+                        <button class="btn btn-primary btn-full" id="newProjectBtn">
+                            <i class="fas fa-plus"></i>
+                            مشروع جديد
+                        </button>
+                    </div>
+                </div>
+                
+                <div class="projects-main">
+                    <div class="project-header">
+                        <div class="project-title">
+                            <h3>مشروع فيلا الريم</h3>
+                            <span class="project-badge">نشط</span>
+                        </div>
+                        
+                        <div class="project-actions">
+                            <button class="btn btn-secondary">
+                                <i class="fas fa-share-alt"></i>
+                                مشاركة
+                            </button>
+                            <button class="btn btn-primary">
+                                <i class="fas fa-download"></i>
+                                تحميل الكل
+                            </button>
+                        </div>
+                    </div>
+                    
+                    <div class="project-meta">
+                        <span><i class="fas fa-file"></i> 12 ملف</span>
+                        <span><i class="fas fa-folder-open"></i> 3 مجلدات</span>
+                        <span><i class="fas fa-calendar-alt"></i> تاريخ الإنشاء: 2024/01/15</span>
+                    </div>
+                    
+                    <div class="project-files">
+                        <div class="file-card">
+                            <div class="file-icon">
+                                <i class="fas fa-file-cad"></i>
+                            </div>
+                            <div class="file-info">
+                                <h4>مخطط_الطابق_الأول.dwg</h4>
+                                <p>2.5 MB • تم التعديل اليوم</p>
+                            </div>
+                            <div class="file-actions">
+                                <button class="btn-action" title="معاينة">
+                                    <i class="fas fa-eye"></i>
+                                </button>
+                                <button class="btn-action" title="تحميل">
+                                    <i class="fas fa-download"></i>
+                                </button>
+                                <button class="btn-action" title="مزيد من الخيارات">
+                                    <i class="fas fa-ellipsis-v"></i>
+                                </button>
+                            </div>
+                        </div>
+                        
+                        <div class="file-card">
+                            <div class="file-icon">
+                                <i class="fas fa-file-cad"></i>
+                            </div>
+                            <div class="file-info">
+                                <h4>مخطط_الطابق_الثاني.dwg</h4>
+                                <p>2.3 MB • تم التعديل أمس</p>
+                            </div>
+                            <div class="file-actions">
+                                <button class="btn-action" title="معاينة">
+                                    <i class="fas fa-eye"></i>
+                                </button>
+                                <button class="btn-action" title="تحميل">
+                                    <i class="fas fa-download"></i>
+                                </button>
+                                <button class="btn-action" title="مزيد من الخيارات">
+                                    <i class="fas fa-ellipsis-v"></i>
+                                </button>
+                            </div>
+                        </div>
+                        
+                        <div class="file-card">
+                            <div class="file-icon">
+                                <i class="fas fa-file-pdf"></i>
+                            </div>
+                            <div class="file-info">
+                                <h4>الواجهات_والقطاعات.pdf</h4>
+                                <p>5.8 MB • تم التعديل قبل 3 أيام</p>
+                            </div>
+                            <div class="file-actions">
+                                <button class="btn-action" title="معاينة">
+                                    <i class="fas fa-eye"></i>
+                                </button>
+                                <button class="btn-action" title="تحميل">
+                                    <i class="fas fa-download"></i>
+                                </button>
+                                <button class="btn-action" title="مزيد من الخيارات">
+                                    <i class="fas fa-ellipsis-v"></i>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="project-stats">
+                        <div class="stat-card">
+                            <div class="stat-icon blue">
+                                <i class="fas fa-file"></i>
+                            </div>
+                            <div class="stat-details">
+                                <h4>12</h4>
+                                <p>إجمالي الملفات</p>
+                            </div>
+                        </div>
+                        
+                        <div class="stat-card">
+                            <div class="stat-icon green">
+                                <i class="fas fa-folder"></i>
+                            </div>
+                            <div class="stat-details">
+                                <h4>3</h4>
+                                <p>المجلدات</p>
+                            </div>
+                        </div>
+                        
+                        <div class="stat-card">
+                            <div class="stat-icon purple">
+                                <i class="fas fa-share-alt"></i>
+                            </div>
+                            <div class="stat-details">
+                                <h4>5</h4>
+                                <p>مشاركة</p>
+                            </div>
+                        </div>
+                        
+                        <div class="stat-card">
+                            <div class="stat-icon orange">
+                                <i class="fas fa-history"></i>
+                            </div>
+                            <div class="stat-details">
+                                <h4>23</h4>
+                                <p>إصدار محفوظ</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- إعدادات GitLab -->
+    <section class="gitlab-section" id="gitlab">
+        <div class="container">
+            <div class="section-header">
+                <span class="section-badge">التكامل</span>
+                <h2 class="section-title">
+                    تكامل
+                    <span class="highlight">GitLab</span>
+                </h2>
+                <p class="section-description">
+                    ربط مشاريعك بمستودعات GitLab وإدارة الكود والإصدارات بسهولة
+                </p>
+            </div>
+            
+            <div class="gitlab-dashboard">
+                <div class="gitlab-sidebar">
+                    <div class="gitlab-header">
+                        <div class="gitlab-logo">
+                            <i class="fab fa-gitlab"></i>
+                        </div>
+                        <h3>GitLab</h3>
+                    </div>
+                    
+                    <div class="gitlab-status">
+                        <div class="connection-status connected">
+                            <span class="status-dot"></span>
+                            <span>متصل</span>
+                        </div>
+                    </div>
+                    
+                    <div class="gitlab-repos">
+                        <h4>المستودعات</h4>
+                        <div class="repo-item active">
+                            <i class="fas fa-book"></i>
+                            <span>dwg-projects/villa-al-reem</span>
+                        </div>
+                        <div class="repo-item">
+                            <i class="fas fa-book"></i>
+                            <span>dwg-projects/commercial-center</span>
+                        </div>
+                        <div class="repo-item">
+                            <i class="fas fa-book"></i>
+                            <span>dwg-projects/hospital</span>
+                        </div>
+                    </div>
+                    
+                    <button class="btn btn-primary btn-full" id="addRepoBtn">
+                        <i class="fas fa-plus"></i>
+                        إضافة مستودع
+                    </button>
+                </div>
+                
+                <div class="gitlab-main">
+                    <div class="gitlab-header-info">
+                        <div class="repo-info">
+                            <i class="fas fa-book"></i>
+                            <div>
+                                <h3>dwg-projects/villa-al-reem</h3>
+                                <p>آخر نشاط: قبل 2 ساعة</p>
+                            </div>
+                        </div>
+                        
+                        <div class="repo-actions">
+                            <button class="btn btn-secondary">
+                                <i class="fas fa-sync"></i>
+                                مزامنة
+                            </button>
+                            <button class="btn btn-primary">
+                                <i class="fas fa-code-branch"></i>
+                                إنشاء فرع
+                            </button>
+                        </div>
+                    </div>
+                    
+                    <div class="gitlab-stats">
+                        <div class="pipeline-card">
+                            <h4><i class="fas fa-wave-square"></i> العمليات</h4>
+                            <div class="pipeline-list">
+                                <div class="pipeline-item success">
+                                    <span class="pipeline-status">
+                                        <i class="fas fa-check-circle"></i>
+                                    </span>
+                                    <div class="pipeline-info">
+                                        <p>build #45</p>
+                                        <span>تم بنجاح قبل ساعة</span>
+                                    </div>
+                                </div>
+                                <div class="pipeline-item running">
+                                    <span class="pipeline-status">
+                                        <i class="fas fa-spinner fa-spin"></i>
+                                    </span>
+                                    <div class="pipeline-info">
+                                        <p>build #46</p>
+                                        <span>جاري التنفيذ...</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="merge-request-card">
+                            <h4><i class="fas fa-code-branch"></i> طلبات الدمج</h4>
+                            <div class="mr-list">
+                                <div class="mr-item">
+                                    <span class="mr-status open">مفتوح</span>
+                                    <p>تحديث مخططات الطابق الثاني</p>
+                                    <span>#12 • قبل 3 ساعات</span>
+                                </div>
+                                <div class="mr-item">
+                                    <span class="mr-status merged">تم الدمج</span>
+                                    <p>إصلاح أخطاء الطبقات</p>
+                                    <span>#11 • قبل يوم</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="gitlab-files">
+                        <div class="files-tree">
+                            <div class="tree-item">
+                                <i class="fas fa-folder-open"></i>
+                                <span>cad-files</span>
+                            </div>
+                            <div class="tree-item nested">
+                                <i class="fas fa-folder"></i>
+                                <span>floor-plans</span>
+                            </div>
+                            <div class="tree-item nested">
+                                <i class="fas fa-file-cad"></i>
+                                <span>ground-floor.dwg</span>
+                            </div>
+                            <div class="tree-item nested">
+                                <i class="fas fa-file-cad"></i>
+                                <span>first-floor.dwg</span>
+                            </div>
+                            <div class="tree-item nested">
+                                <i class="fas fa-folder"></i>
+                                <span>elevations</span>
+                            </div>
+                            <div class="tree-item nested">
+                                <i class="fas fa-file-cad"></i>
+                                <span>north-elevation.dwg</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- الإعدادات -->
+    <section class="settings-section" id="settings">
+        <div class="container">
+            <div class="section-header">
+                <span class="section-badge">التخصيص</span>
+                <h2 class="section-title">
+                    الإعدادات
+                    <span class="highlight">والتفضيلات</span>
+                </h2>
+                <p class="section-description">
+                    قم بتخصيص تجربتك حسب احتياجاتك وتفضيلاتك
+                </p>
+            </div>
+            
+            <div class="settings-container">
+                <div class="settings-sidebar">
+                    <div class="settings-tabs">
+                        <button class="settings-tab active" data-tab="general">
+                            <i class="fas fa-cog"></i>
+                            <span>عام</span>
+                        </button>
+                        <button class="settings-tab" data-tab="appearance">
+                            <i class="fas fa-palette"></i>
+                            <span>المظهر</span>
+                        </button>
+                        <button class="settings-tab" data-tab="conversions">
+                            <i class="fas fa-exchange-alt"></i>
+                            <span>التحويلات</span>
+                        </button>
+                        <button class="settings-tab" data-tab="storage">
+                            <i class="fas fa-cloud"></i>
+                            <span>التخزين</span>
+                        </button>
+                        <button class="settings-tab" data-tab="integrations">
+                            <i class="fas fa-plug"></i>
+                            <span>التكاملات</span>
+                        </button>
+                        <button class="settings-tab" data-tab="account">
+                            <i class="fas fa-user-cog"></i>
+                            <span>الحساب</span>
+                        </button>
+                    </div>
+                </div>
+                
+                <div class="settings-main">
+                    <div class="settings-group active" id="generalSettings">
+                        <h3>الإعدادات العامة</h3>
+                        
+                        <div class="setting-item">
+                            <div class="setting-info">
+                                <h4>اللغة</h4>
+                                <p>اختر لغة الواجهة</p>
+                            </div>
+                            <div class="setting-control">
+                                <select id="languageSelect">
+                                    <option value="ar" selected>العربية</option>
+                                    <option value="en">English</option>
+                                </select>
+                            </div>
+                        </div>
+                        
+                        <div class="setting-item">
+                            <div class="setting-info">
+                                <h4>المنطقة الزمنية</h4>
+                                <p>تحديد المنطقة الزمنية للتواريخ</p>
+                            </div>
+                            <div class="setting-control">
+                                <select id="timezoneSelect">
+                                    <option value="Asia/Riyadh" selected>الرياض (UTC+3)</option>
+                                    <option value="Asia/Dubai">دبي (UTC+4)</option>
+                                    <option value="UTC">UTC</option>
+                                </select>
+                            </div>
+                        </div>
+                        
+                        <div class="setting-item">
+                            <div class="setting-info">
+                                <h4>الملفات الأخيرة</h4>
+                                <p>عدد الملفات المعروضة في القائمة</p>
+                            </div>
+                            <div class="setting-control">
+                                <select id="recentFilesSelect">
+                                    <option value="5">5 ملفات</option>
+                                    <option value="10" selected>10 ملفات</option>
+                                    <option value="20">20 ملف</option>
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="settings-group" id="appearanceSettings">
+                        <h3>إعدادات المظهر</h3>
+                        
+                        <div class="setting-item">
+                            <div class="setting-info">
+                                <h4>المظهر</h4>
+                                <p>اختر وضع المظهر</p>
+                            </div>
+                            <div class="setting-control">
+                                <select id="themeSelect">
+                                    <option value="light">فاتح</option>
+                                    <option value="dark">داكن</option>
+                                    <option value="system" selected>تلقائي (حسب النظام)</option>
+                                </select>
+                            </div>
+                        </div>
+                        
+                        <div class="setting-item">
+                            <div class="setting-info">
+                                <h4>اللون الرئيسي</h4>
+                                <p>اختر لون الواجهة</p>
+                            </div>
+                            <div class="setting-control">
+                                <select id="primaryColorSelect">
+                                    <option value="purple" selected>بنفسجي (افتراضي)</option>
+                                    <option value="blue">أزرق</option>
+                                    <option value="green">أخضر</option>
+                                    <option value="orange">برتقالي</option>
+                                    <option value="red">أحمر</option>
+                                </select>
+                            </div>
+                        </div>
+                        
+                        <div class="setting-item">
+                            <div class="setting-info">
+                                <h4>الرسوم المتحركة</h4>
+                                <p>تشغيل أو إيقاف الرسوم المتحركة</p>
+                            </div>
+                            <div class="setting-control">
+                                <label class="toggle">
+                                    <input type="checkbox" id="animationsToggle" checked>
+                                    <span class="slider"></span>
+                                </label>
+                            </div>
+                        </div>
+                        
+                        <div class="setting-item">
+                            <div class="setting-info">
+                                <h4>الوضع المختصر</h4>
+                                <p>تقليل الحركات للمستخدمين الحساسين</p>
+                            </div>
+                            <div class="setting-motion-control">
+                                <label class="toggle">
+                                    <input type="checkbox" id="reducedMotionToggle">
+                                    <span class="slider"></span>
+                                </label>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="settings-group" id="conversionsSettings">
+                        <h3>إعدادات التحويل</h3>
+                        
+                        <div class="setting-item">
+                            <div class="setting-info">
+                                <h4>صيغة الإخراج الافتراضية</h4>
+                                <p>الصيغة الافتراضية عند التحويل</p>
+                            </div>
+                            <div class="setting-control">
+                                <select id="defaultFormatSelect">
+                                    <option value="pdf" selected>PDF</option>
+                                    <option value="dxf">DXF</option>
+                                    <option value="svg">SVG</option>
+                                    <option value="png">PNG</option>
+                                    <option value="jpg">JPG</option>
+                                </select>
+                            </div>
+                        </div>
+                        
+                        <div class="setting-item">
+                            <div class="setting-info">
+                                <h4>دقة الإخراج الافتراضية</h4>
+                                <p>دقة الصور المحولة</p>
+                            </div>
+                            <div class="setting-control">
+                                <select id="defaultResolutionSelect">
+                                    <option value="150">150 DPI</option>
+                                    <option value="300" selected>300 DPI</option>
+                                    <option value="600">600 DPI</option>
+                                    <option value="1200">1200 DPI</option>
+                                </select>
+                            </div>
+                        </div>
+                        
+                        <div class="setting-item">
+                            <div class="setting-info">
+                                <h4>الذكاء الاصطناعي</h4>
+                                <p>استخدام الذكاء الاصطناعي تلقائياً</p>
+                            </div>
+                            <div class="setting-control">
+                                <label class="toggle">
+                                    <input type="checkbox" id="autoAIToggle" checked>
+                                    <span class="slider"></span>
+                                </label>
+                            </div>
+                        </div>
+                        
+                        <div class="setting-item">
+                            <div class="setting-info">
+                                <h4>الحفظ التلقائي</h4>
+                                <p>حفظ الإعدادات تلقائياً</p>
+                            </div>
+                            <div class="setting-control">
+                                <label class="toggle">
+                                    <input type="checkbox" id="autoSaveToggle" checked>
+                                    <span class="slider"></span>
+                                </label>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="settings-group" id="storageSettings">
+                        <h3>إعدادات التخزين</h3>
+                        
+                        <div class="storage-info">
+                            <div class="storage-header">
+                                <h4>التخزين المستخدم</h4>
+                                <span class="storage-usage">2.5 GB من 10 GB</span>
+                            </div>
+                            <div class="storage-progress">
+                                <div class="storage-progress-bar" style="width: 25%"></div>
+                            </div>
+                        </div>
+                        
+                        <div class="cloud-storage-list">
+                            <div class="cloud-storage-item">
+                                <div class="cloud-icon dropbox">
+                                    <i class="fab fa-dropbox"></i>
+                                </div>
+                                <div class="cloud-info">
+                                    <h4>Dropbox</h4>
+                                    <p>1.2 GB مستخدم</p>
+                                    <div class="storage-progress">
+                                        <div class="storage-progress-bar" style="width: 60%"></div>
+                                    </div>
+                                </div>
+                                <button class="btn btn-small btn-secondary">إدارة</button>
+                            </div>
+                            
+                            <div class="cloud-storage-item">
+                                <div class="cloud-icon one-drive">
+                                    <i class="fab fa-microsoft"></i>
+                                </div>
+                                <div class="cloud-info">
+                                    <h4>OneDrive</h4>
+                                    <p>800 MB مستخدم</p>
+                                    <div class="storage-progress">
+                                        <div class="storage-progress-bar" style="width: 40%"></div>
+                                    </div>
+                                </div>
+                                <button class="btn btn-small btn-secondary">إدارة</button>
+                            </div>
+                        </div>
+                        
+                        <div class="setting-item">
+                            <div class="setting-info">
+                                <h4>المزامنة التلقائية</h4>
+                                <p>مزامنة الملفات تلقائياً</p>
+                            </div>
+                            <div class="setting-control">
+                                <label class="toggle">
+                                    <input type="checkbox" id="autoSyncToggle" checked>
+                                    <span class="slider"></span>
+                                </label>
+                            </div>
+                        </div>
+                        
+                        <div class="setting-item">
+                            <div class="setting-info">
+                                <h4>الحذف التلقائي</h4>
+                                <p>حذف الملفات بعد 24 ساعة</p>
+                            </div>
+                            <div class="setting-control">
+                                <label class="toggle">
+                                    <input type="checkbox" id="autoDeleteToggle" checked>
+                                    <span class="slider"></span>
+                                </label>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="settings-group" id="integrationsSettings">
+                        <h3>إعدادات التكاملات</h3>
+                        
+                        <div class="integration-list">
+                            <div class="integration-item">
+                                <div class="integration-icon">
+                                    <i class="fab fa-gitlab"></i>
+                                </div>
+                                <div class="integration-info">
+                                    <h4>GitLab</h4>
+                                    <p>مستودعات GitLab</p>
+                                </div>
+                                <div class="integration-status connected">
+                                    <span class="status-dot"></span>
+                                    <span>متصل</span>
+                                </div>
+                                <button class="btn btn-small btn-secondary">إدارة</button>
+                            </div>
+                            
+                            <div class="integration-item">
+                                <div class="integration-icon">
+                                    <i class="fab fa-google-drive"></i>
+                                </div>
+                                <div class="integration-info">
+                                    <h4>Google Drive</h4>
+                                    <p>تخزين سحابي</p>
+                                </div>
+                                <div class="integration-status disconnected">
+                                    <span class="status-dot"></span>
+                                    <span>غير متصل</span>
+                                </div>
+                                <button class="btn btn-small btn-primary">اتصال</button>
+                            </div>
+                            
+                            <div class="integration-item">
+                                <div class="integration-icon">
+                                    <i class="fab fa-dropbox"></i>
+                                </div>
+                                <div class="integration-info">
+                                    <h4>Dropbox</h4>
+                                    <p>تخزين سحابي</p>
+                                </div>
+                                <div class="integration-status connected">
+                                    <span class="status-dot"></span>
+                                    <span>متصل</span>
+                                </div>
+                                <button class="btn btn-small btn-secondary">إدارة</button>
+                            </div>
+                            
+                            <div class="integration-item">
+                                <div class="integration-icon">
+                                    <i class="fab fa-microsoft"></i>
+                                </div>
+                                <div class="integration-info">
+                                    <h4>OneDrive</h4>
+                                    <p>تخزين سحابي</p>
+                                </div>
+                                <div class="integration-status disconnected">
+                                    <span class="status-dot"></span>
+                                    <span>غير متصل</span>
+                                </div>
+                                <button class="btn btn-small btn-primary">اتصال</button>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="settings-group" id="accountSettings">
+                        <h3>إعدادات الحساب</h3>
+                        
+                        <div class="account-info">
+                            <div class="account-avatar">
+                                <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='%23667eea'%3E%3Cpath d='M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 3c1.66 0 3 1.34 3 3s-1.34 3-3 3-3-1.34-3-3 1.34-3 3-3zm0 14.2c-2.5 0-4.71-1.28-6-3.22.03-1.99 4-3.08 6-3.08 1.99 0 5.97 1.09 6 3.08-1.29 1.94-3.5 3.22-6 3.22z'/%3E%3C/svg%3E" alt="Avatar">
+                            </div>
+                            <div class="account-details">
+                                <h4>المستخدم</h4>
+                                <p>user@example.com</p>
+                            </div>
+                            <button class="btn btn-secondary">تعديل الملف</button>
+                        </div>
+                        
+                        <div class="setting-item">
+                            <div class="setting-info">
+                                <h4>البريد الإلكتروني</h4>
+                                <p>user@example.com</p>
+                            </div>
+                            <button class="btn btn-small btn-secondary">تغيير</button>
+                        </div>
+                        
+                        <div class="setting-item">
+                            <div class="setting-info">
+                                <h4>كلمة المرور</h4>
+                                <p>تم تغييرها آخر مرة: قبل 30 يوم</p>
+                            </div>
+                            <button class="btn btn-small btn-secondary">تغيير</button>
+                        </div>
+                        
+                        <div class="setting-item">
+                            <div class="setting-info">
+                                <h4>المصادقة الثنائية</h4>
+                                <p>إضافة طبقة حماية إضافية</p>
+                            </div>
+                            <div class="setting-control">
+                                <label class="toggle">
+                                    <input type="checkbox" id="twoFactorToggle">
+                                    <span class="slider"></span>
+                                </label>
+                            </div>
+                        </div>
+                        
+                        <div class="danger-zone">
+                            <h4>منطقة الخطر</h4>
+                            <div class="setting-item">
+                                <div class="setting-info">
+                                    <h4>حذف الحساب</h4>
+                                    <p>حذف دائم وغير قابل للاسترجاع</p>
+                                </div>
+                                <button class="btn btn-small" style="background: #dc2626; color: white;">حذف الحساب</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- الفوتر -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-brand">
+                    <div class="logo">
+                        <div class="logo-icon">
+                            <i class="fas fa-drafting-compass"></i>
+                        </div>
+                        <span class="logo-text">DWG Converter Pro</span>
+                    </div>
+                    <p class="footer-description">
+                        منصتك الهندسية الذكية لتحويل ومعالجة ملفات CAD بدقة عالية وسرعة فائقة
+                    </p>
+                    <div class="footer-social">
+                        <a href="#"><i class="fab fa-twitter"></i></a>
+                        <a href="#"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                        <a href="#"><i class="fab fa-linkedin-in"></i></a>
+                        <a href="#"><i class="fab fa-youtube"></i></a>
+                    </div>
+                </div>
+                
+                <div class="footer-links">
+                    <h4>روابط سريعة</h4>
+                    <ul>
+                        <li><a href="#home">الرئيسية</a></li>
+                        <li><a href="#features">المميزات</a></li>
+                        <li><a href="#converter">المحول</a></li>
+                        <li><a href="#pricing">الأسعار</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-services">
+                    <h4>الخدمات</h4>
+                    <ul>
+                        <li><a href="#">تحويل DWG</a></li>
+                        <li><a href="#">تحويل PDF</a></li>
+                        <li><a href="#">تحويل DXF</a></li>
+                        <li><a href="#">الذكاء الاصطناعي</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-contact">
+                    <h4>تواصل معنا</h4>
+                    <p><i class="fas fa-envelope"></i> fcab8090@gmail.com</p>
+                    <p><i class="fas fa-phone"></i> +251 95 733 3692</p>
+                    <p><i class="fas fa-map-marker-alt"></i> أثيوبيا</p>
+                </div>
+            </div>
+            
+            <div class="footer-bottom">
+                <p>© 2024 DWG Converter Pro. جميع الحقوق محفوظة لدى Abdulelh Ghwaith</p>
+                <div class="footer-legal">
+                    <a href="#">سياسة الخصوصية</a>
+                    <a href="#">شروط الخدمة</a>
+                    <a href="#">اتفاقية الاستخدام</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- زر العودة للأعلى -->
+    <button class="back-to-top" id="backToTop">
+        <i class="fas fa-arrow-up"></i>
+    </button>
+
+    <!-- نافذة تسجيل الدخول -->
+    <div class="login-modal" id="loginModal">
+        <div class="login-container">
+            <button class="login-close" onclick="closeLoginModal()">
+                <i class="fas fa-times"></i>
+            </button>
+            
+            <div class="login-header">
+                <div class="login-logo">
+                    <div class="logo-icon">
+                        <i class="fas fa-drafting-compass"></i>
+                    </div>
+                    <span class="logo-text">DWG Converter Pro</span>
+                </div>
+                <h2>مرحباً بعودتك</h2>
+                <p>سجل دخولك للوصول إلى جميع الميزات</p>
+            </div>
+            
+            <div class="login-tabs">
+                <button class="login-tab active" data-tab="login">تسجيل الدخول</button>
+                <button class="login-tab" data-tab="phone">الهاتف</button>
+                <button class="login-tab" data-tab="register">إنشاء حساب</button>
+            </div>
+            
+            <div class="login-content">
+                <div class="login-form active" id="loginForm">
+                    <div class="form-group">
+                        <label for="loginEmail"><i class="fas fa-envelope"></i> البريد الإلكتروني</label>
+                        <input type="email" id="loginEmail" placeholder="أدخل بريدك الإلكتروني">
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="loginPassword"><i class="fas fa-lock"></i> كلمة المرور</label>
+                        <div class="password-input">
+                            <input type="password" id="loginPassword" placeholder="أدخل كلمة المرور">
+                            <button class="toggle-password" onclick="togglePassword('loginPassword')">
+                                <i class="fas fa-eye"></i>
+                            </button>
+                        </div>
+                    </div>
+                    
+                    <div class="form-options">
+                        <label class="remember-me">
+                            <input type="checkbox" id="rememberMe">
+                            <span>تذكرني</span>
+                        </label>
+                        <a href="#" class="forgot-password">نسيت كلمة المرور؟</a>
+                    </div>
+                    
+                    <button class="btn btn-primary btn-full" id="loginSubmitBtn" onclick="handleLogin()">
+                        <i class="fas fa-sign-in-alt"></i>
+                        تسجيل الدخول
+                    </button>
+                </div>
+                
+                <div class="phone-form" id="phoneForm">
+                    <div class="phone-step active" id="phoneStep1">
+                        <div class="form-group">
+                            <label for="phoneCountry"><i class="fas fa-globe"></i> الدولة</label>
+                            <select id="phoneCountry">
+                                <option value="+251">🇪🇹 إثيوبيا (+251)</option>
+                                <option value="+966">🇸🇦 السعودية (+966)</option>
+                                <option value="+971">🇦🇪 الإمارات (+971)</option>
+                                <option value="+20">🇪🇬 مصر (+20)</option>
+                                <option value="+965">🇰🇼 الكويت (+965)</option>
+                                <option value="+974">🇶🇦 قطر (+974)</option>
+                                <option value="+973">🇧🇭 البحرين (+973)</option>
+                                <option value="+968">🇴🇲 عُمان (+968)</option>
+                                <option value="+1">🇺🇸 الولايات المتحدة (+1)</option>
+                                <option value="+44">🇬🇧 المملكة المتحدة (+44)</option>
+                                <option value="+49">🇩🇪 ألمانيا (+49)</option>
+                                <option value="+33">🇫🇷 فرنسا (+33)</option>
+                            </select>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="phoneNumber"><i class="fas fa-phone"></i> رقم الهاتف</label>
+                            <input type="tel" id="phoneNumber" placeholder="أدخل رقم الهاتف بدون صفر البداية">
+                        </div>
+                        
+                        <button class="btn btn-primary btn-full" id="sendOtpBtn" onclick="sendOTP()">
+                            <i class="fas fa-paper-plane"></i>
+                            إرسال رمز التحقق
+                        </button>
+                    </div>
+                    
+                    <div class="phone-step" id="phoneStep2">
+                        <div class="otp-info">
+                            <i class="fas fa-shield-alt"></i>
+                            <p>أدخل رمز التحقق المرسل إلى<br><strong id="displayPhone"></strong></p>
+                        </div>
+                        
+                        <div class="otp-inputs">
+                            <input type="text" class="otp-input" maxlength="1" oninput="handleOtpInput(this, 'otp2')">
+                            <input type="text" class="otp-input" maxlength="1" oninput="handleOtpInput(this, 'otp3')">
+                            <input type="text" class="otp-input" maxlength="1" oninput="handleOtpInput(this, 'otp4')">
+                            <input type="text" class="otp-input" maxlength="1" oninput="handleOtpInput(this, 'otp5')">
+                            <input type="text" class="otp-input" maxlength="1" oninput="handleOtpInput(this, 'otp6')">
+                        </div>
+                        
+                        <div class="otp-actions">
+                            <button class="btn btn-secondary btn-small" onclick="resendOTP()">
+                                <i class="fas fa-redo"></i>
+                                إعادة إرسال
+                            </button>
+                            <button class="btn btn-secondary btn-small" onclick="backToPhoneStep1()">
+                                <i class="fas fa-arrow-right"></i>
+                                تغيير الرقم
+                            </button>
+                        </div>
+                        
+                        <button class="btn btn-primary btn-full" id="verifyOtpBtn" onclick="verifyOTP()">
+                            <i class="fas fa-check-circle"></i>
+                            تحقق登录
+                        </button>
+                    </div>
+                    
+                    <div class="phone-step" id="phoneStep3">
+                        <div class="phone-profile">
+                            <div class="profile-avatar">
+                                <i class="fas fa-user"></i>
+                            </div>
+                            <h3>أدخل اسمك</h3>
+                            <p>سيظهر هذا الاسم في ملفك الشخصي</p>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="phoneUserName"><i class="fas fa-user"></i> الاسم الكامل</label>
+                            <input type="text" id="phoneUserName" placeholder="أدخل اسمك الكامل">
+                        </div>
+                        
+                        <button class="btn btn-primary btn-full" id="completePhoneRegBtn" onclick="completePhoneRegistration()">
+                            <i class="fas fa-check"></i>
+                            إتمام التسجيل
+                        </button>
+                    </div>
+                </div>
+                
+                <div class="register-form" id="registerForm">
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="registerFirstName"><i class="fas fa-user"></i> الاسم الأول</label>
+                            <input type="text" id="registerFirstName" placeholder="الاسم الأول">
+                        </div>
+                        <div class="form-group">
+                            <label for="registerLastName"><i class="fas fa-user"></i> الاسم الأخير</label>
+                            <input type="text" id="registerLastName" placeholder="الاسم الأخير">
+                        </div>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="registerEmail"><i class="fas fa-envelope"></i> البريد الإلكتروني</label>
+                        <input type="email" id="registerEmail" placeholder="أدخل بريدك الإلكتروني">
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="registerPassword"><i class="fas fa-lock"></i> كلمة المرور</label>
+                        <div class="password-input">
+                            <input type="password" id="registerPassword" placeholder="أنشئ كلمة مرور">
+                            <button class="toggle-password" onclick="togglePassword('registerPassword')">
+                                <i class="fas fa-eye"></i>
+                            </button>
+                        </div>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="registerConfirmPassword"><i class="fas fa-lock"></i> تأكيد كلمة المرور</label>
+                        <div class="password-input">
+                            <input type="password" id="registerConfirmPassword" placeholder="أعد إدخال كلمة المرور">
+                            <button class="toggle-password" onclick="togglePassword('registerConfirmPassword')">
+                                <i class="fas fa-eye"></i>
+                            </button>
+                        </div>
+                    </div>
+                    
+                    <label class="terms-checkbox">
+                        <input type="checkbox" id="agreeTerms">
+                        <span>أوافق على <a href="#">الشروط والأحكام</a> و <a href="#">سياسة الخصوصية</a></span>
+                    </label>
+                    
+                    <button class="btn btn-primary btn-full" id="registerSubmitBtn" onclick="handleRegister()">
+                        <i class="fas fa-user-plus"></i>
+                        إنشاء حساب
+                    </button>
+                </div>
+            </div>
+            
+            <div class="login-divider">
+                <span>أو سجل باستخدام</span>
+            </div>
+            
+            <div class="social-login">
+                <button class="social-btn google" onclick="socialLogin('google')">
+                    <i class="fab fa-google"></i>
+                    <span>Google</span>
+                </button>
+                <button class="social-btn github" onclick="socialLogin('github')">
+                    <i class="fab fa-github"></i>
+                    <span>GitHub</span>
+                </button>
+                <button class="social-btn gitlab" onclick="socialLogin('gitlab')">
+                    <i class="fab fa-gitlab"></i>
+                    <span>GitLab</span>
+                </button>
+            </div>
+            
+            <div class="login-footer">
+                <p id="loginFooterText">ليس لديك حساب؟ <a href="#" onclick="switchToTab('register')">سجل الآن</a></p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Service Worker -->
+    <script src="sw.js"></script>
+    
+    <!-- Main Script -->
+    <script src="script.js"></script>
+</body>
+</html>

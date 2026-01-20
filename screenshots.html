@@ -1,0 +1,290 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DWG Converter Pro - لقطات الشاشة</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;500;600;700;800&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Cairo', sans-serif;
+            background: linear-gradient(135deg, #0B0E14 0%, #1A1A2E 100%);
+            min-height: 100vh;
+            color: white;
+            padding: 40px 20px;
+        }
+        
+        .container {
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+        
+        .header {
+            text-align: center;
+            margin-bottom: 60px;
+        }
+        
+        .header h1 {
+            font-size: 48px;
+            font-weight: 800;
+            background: linear-gradient(135deg, #3B82F6 0%, #8B5CF6 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            margin-bottom: 16px;
+        }
+        
+        .header p {
+            font-size: 18px;
+            color: rgba(255, 255, 255, 0.7);
+        }
+        
+        .screenshots-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(600px, 1fr));
+            gap: 40px;
+        }
+        
+        .screenshot-card {
+            background: rgba(255, 255, 255, 0.05);
+            backdrop-filter: blur(10px);
+            border-radius: 24px;
+            overflow: hidden;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            transition: all 0.3s ease;
+        }
+        
+        .screenshot-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 60px rgba(59, 130, 246, 0.3);
+        }
+        
+        .screenshot-preview {
+            position: relative;
+            width: 100%;
+            aspect-ratio: 16/10;
+            overflow: hidden;
+        }
+        
+        .screenshot-preview img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+        
+        .screenshot-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(135deg, rgba(59, 130, 246, 0.1) 0%, rgba(139, 92, 246, 0.1) 100%);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            opacity: 0;
+            transition: all 0.3s ease;
+        }
+        
+        .screenshot-card:hover .screenshot-overlay {
+            opacity: 1;
+        }
+        
+        .view-btn {
+            padding: 16px 32px;
+            background: linear-gradient(135deg, #3B82F6 0%, #8B5CF6 100%);
+            color: white;
+            border: none;
+            border-radius: 50px;
+            font-family: 'Cairo', sans-serif;
+            font-size: 16px;
+            font-weight: 600;
+            cursor: pointer;
+            transform: scale(0.9);
+            transition: all 0.3s ease;
+        }
+        
+        .screenshot-card:hover .view-btn {
+            transform: scale(1);
+        }
+        
+        .screenshot-info {
+            padding: 24px;
+        }
+        
+        .screenshot-info h3 {
+            font-size: 24px;
+            font-weight: 700;
+            margin-bottom: 8px;
+        }
+        
+        .screenshot-info p {
+            font-size: 14px;
+            color: rgba(255, 255, 255, 0.6);
+        }
+        
+        .badge {
+            display: inline-block;
+            padding: 6px 16px;
+            background: rgba(59, 130, 246, 0.2);
+            color: #3B82F6;
+            border-radius: 20px;
+            font-size: 12px;
+            font-weight: 600;
+            margin-bottom: 12px;
+        }
+        
+        .placeholder-svg {
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(135deg, #1A1A2E 0%, #16213E 100%);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        .placeholder-svg i {
+            font-size: 80px;
+            color: rgba(59, 130, 246, 0.5);
+            margin-bottom: 24px;
+        }
+        
+        .placeholder-svg h4 {
+            font-size: 24px;
+            font-weight: 600;
+            color: rgba(255, 255, 255, 0.8);
+            margin-bottom: 8px;
+        }
+        
+        .placeholder-svg p {
+            font-size: 14px;
+            color: rgba(255, 255, 255, 0.5);
+        }
+        
+        @media (max-width: 768px) {
+            .screenshots-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .header h1 {
+                font-size: 32px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>لقطات الشاشة</h1>
+            <p>استعرض الواجهات الحديثة لـ DWG Converter Pro</p>
+        </div>
+        
+        <div class="screenshots-grid">
+            <!-- الصفحة الرئيسية -->
+            <div class="screenshot-card">
+                <div class="screenshot-preview">
+                    <div class="placeholder-svg">
+                        <i class="fas fa-home"></i>
+                        <h4>الصفحة الرئيسية</h4>
+                        <p>تصميم عصري مع Glassmorphism 2.0</p>
+                    </div>
+                </div>
+                <div class="screenshot-info">
+                    <span class="badge">الرئيسية</span>
+                    <h3>الصفحة الرئيسية</h3>
+                    <p>تصميم عصري متجاوب مع خلفيات ديناميكية وتأثيرات بصرية مذهلة</p>
+                </div>
+            </div>
+            
+            <!-- محول الملفات -->
+            <div class="screenshot-card">
+                <div class="screenshot-preview">
+                    <div class="placeholder-svg">
+                        <i class="fas fa-exchange-alt"></i>
+                        <h4>محول الملفات</h4>
+                        <p>تحويل متقدم مع خيارات متعددة</p>
+                    </div>
+                </div>
+                <div class="screenshot-info">
+                    <span class="badge">المحول</span>
+                    <h3>محول الملفات المتقدم</h3>
+                    <p>تحويل بين صيغ DWG, DXF, PDF, SVG, PNG, JPG بسهولة</p>
+                </div>
+            </div>
+            
+            <!-- أدوات الذكاء الاصطناعي -->
+            <div class="screenshot-card">
+                <div class="screenshot-preview">
+                    <div class="placeholder-svg">
+                        <i class="fas fa-robot"></i>
+                        <h4>الذكاء الاصطناعي</h4>
+                        <p>أدوات ذكية للتنظيف والتحليل</p>
+                    </div>
+                </div>
+                <div class="screenshot-info">
+                    <span class="badge">AI</span>
+                    <h3>أدوات الذكاء الاصطناعي</h3>
+                    <p>منظف الطبقات الذكي وتقدير الكميات التلقائي</p>
+                </div>
+            </div>
+            
+            <!-- إدارة المشاريع -->
+            <div class="screenshot-card">
+                <div class="screenshot-preview">
+                    <div class="placeholder-svg">
+                        <i class="fas fa-folder-open"></i>
+                        <h4>إدارة المشاريع</h4>
+                        <p>تنظيم وتعاون متكامل</p>
+                    </div>
+                </div>
+                <div class="screenshot-info">
+                    <span class="badge">المشاريع</span>
+                    <h3>إدارة المشاريع</h3>
+                    <p>نظام متكامل لإدارة المشاريع الهندسية والتعاون</p>
+                </div>
+            </div>
+            
+            <!-- المصادقة -->
+            <div class="screenshot-card">
+                <div class="screenshot-preview">
+                    <div class="placeholder-svg">
+                        <i class="fas fa-user-lock"></i>
+                        <h4>المصادقة</h4>
+                        <p>تسجيل دخول متعدد الخيارات</p>
+                    </div>
+                </div>
+                <div class="screenshot-info">
+                    <span class="badge">تسجيل الدخول</span>
+                    <h3>نظام المصادقة</h3>
+                    <p>تسجيل الدخول عبر الهاتف، البريد الإلكتروني، وGoogle</p>
+                </div>
+            </div>
+            
+            <!-- الإعدادات -->
+            <div class="screenshot-card">
+                <div class="screenshot-preview">
+                    <div class="placeholder-svg">
+                        <i class="fas fa-cogs"></i>
+                        <h4>الإعدادات</h4>
+                        <p>تخصيص شامل للتجربة</p>
+                    </div>
+                </div>
+                <div class="screenshot-info">
+                    <span class="badge">الإعدادات</span>
+                    <h3>لوحة الإعدادات</h3>
+                    <p>تحكم كامل في المظهر والإعدادات والتفضيلات</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

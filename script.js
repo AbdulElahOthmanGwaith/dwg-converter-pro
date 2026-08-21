@@ -219,7 +219,7 @@ function updateFilesList() {
                 <i class="fas fa-file-cad"></i>
             </div>
             <div class="file-info">
-                <h4>${file.name}</h4>
+                <h4>${SecurityUtils.escapeHtml(file.name)}</h4>
                 <p>${formatFileSize(file.size)} • ${getStatusLabel(file.status)}</p>
             </div>
             <div class="file-actions">
@@ -477,7 +477,7 @@ function logout() {
 function showNotification(message, type = 'info') {
     const notification = document.createElement('div');
     notification.className = `login-notification ${type}`;
-    notification.innerHTML = `<i class="fas fa-info-circle"></i> <span>${message}</span>`;
+    notification.innerHTML = `<i class="fas fa-info-circle"></i> <span>${SecurityUtils.escapeHtml(message)}</span>`;
     
     // تنسيق الإشعار برمجياً لضمان الظهور
     notification.style.cssText = `

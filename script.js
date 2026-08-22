@@ -177,13 +177,22 @@ function initFileUpload() {
 }
 
 function handleFiles(fileList) {
+    const maxFileSize = 100 * 1024 * 1024;
+    const validExtensions = ['.dwg', '.dxf', '.dwt', '.dws'];
+    const rejected = [];
     const validFiles = Array.from(fileList).filter(file => {
-        const validExtensions = ['.dwg', '.dxf', '.dwt', '.dws'];
-        return validExtensions.some(ext => file.name.toLowerCase().endsWith(ext));
+        const extensionValid = validExtensions.some(ext => file.name.toLowerCase().endsWith(ext));
+        const sizeValid = file.size <= maxFileSize;
+        if (!extensionValid) rejected.push(`${file.name}: صيغة غير مدعومة`);
+        else if (!sizeValid) rejected.push(`${file.name}: يتجاوز الحد الأقصى 100MB`);
+        return extensionValid && sizeValid;
     });
 
+    if (rejected.length > 0) {
+        showNotification(`تم تجاهل ${rejected.length} ملف غير صالح`, 'error');
+    }
     if (validFiles.length === 0) {
-        showNotification('يرجى اختيار ملفات DWG أو DXF صالحة', 'error');
+        showNotification('يرجى اختيار ملفات DWG أو DXF لا تتجاوز 100MB', 'error');
         return;
     }
 
